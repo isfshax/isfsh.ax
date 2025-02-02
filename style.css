@@ -1,0 +1,338 @@
+@import url(https://db.onlinewebfonts.com/c/736f0d333acd0b3d699307af25299352?family=Neue+Haas+Grotesk+Display+Pro);
+@import url(https://db.onlinewebfonts.com/c/c27709ebd59dd06263af9ab951316c7d?family=Neue+Haas+Grotesk+Text+Pro+Medium);
+:root {
+  --font-size: 0.3vw;
+  --dot-size: 0.3vw;
+  --shine-size: 0.3vw;
+  --margin-top: 50vh;
+}
+
+#center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+body {
+  background: #0a0a14;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: 500px;
+}
+
+div {
+  will-change: transform;
+}
+
+#text-container {
+  color: #b464b4;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: var(--text-left);
+  top: var(--text-top);
+  font-family: "Neue Haas Grotesk Text Pro 55 Roman";
+}
+
+#ui {
+  transform-style: preserve-3d;
+  transform: translateY(-18vh);
+}
+#ui .text {
+  position: absolute;
+  font-size: var(--font-size);
+  color: #fff;
+  line-height: var(--font-size);
+  font-family: "Neue Haas Grotesk Display Pro";
+  padding: 20px 0;
+  mix-blend-mode: screen;
+  transform-style: preserve-3d;
+}
+#ui .text:nth-child(1) {
+  clip-path: polygon(-30% 0, -20% 0, 20% 100%, 0% 100%);
+  animation: wave 3000ms -8000ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(2) {
+  clip-path: polygon(-25% 0, -15% 0, 25% 100%, 5% 100%);
+  animation: wave 3000ms -7800ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(3) {
+  clip-path: polygon(-20% 0, -10% 0, 30% 100%, 10% 100%);
+  animation: wave 3000ms -7600ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(4) {
+  clip-path: polygon(-15% 0, -5% 0, 35% 100%, 15% 100%);
+  animation: wave 3000ms -7400ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(5) {
+  clip-path: polygon(-10% 0, 0% 0, 40% 100%, 20% 100%);
+  animation: wave 3000ms -7200ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(6) {
+  clip-path: polygon(-5% 0, 5% 0, 45% 100%, 25% 100%);
+  animation: wave 3000ms -7000ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(7) {
+  clip-path: polygon(0% 0, 10% 0, 50% 100%, 30% 100%);
+  animation: wave 3000ms -6800ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(8) {
+  clip-path: polygon(5% 0, 15% 0, 55% 100%, 35% 100%);
+  animation: wave 3000ms -6600ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(9) {
+  clip-path: polygon(10% 0, 20% 0, 60% 100%, 40% 100%);
+  animation: wave 3000ms -6400ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(10) {
+  clip-path: polygon(15% 0, 25% 0, 65% 100%, 45% 100%);
+  animation: wave 3000ms -6200ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(11) {
+  clip-path: polygon(20% 0, 30% 0, 70% 100%, 50% 100%);
+  animation: wave 3000ms -6000ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(12) {
+  clip-path: polygon(25% 0, 35% 0, 75% 100%, 55% 100%);
+  animation: wave 3000ms -5800ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(13) {
+  clip-path: polygon(30% 0, 40% 0, 80% 100%, 60% 100%);
+  animation: wave 3000ms -5600ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(14) {
+  clip-path: polygon(35% 0, 45% 0, 85% 100%, 65% 100%);
+  animation: wave 3000ms -5400ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(15) {
+  clip-path: polygon(40% 0, 50% 0, 90% 100%, 70% 100%);
+  animation: wave 3000ms -5200ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(16) {
+  clip-path: polygon(45% 0, 55% 0, 95% 100%, 75% 100%);
+  animation: wave 3000ms -5000ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(17) {
+  clip-path: polygon(50% 0, 60% 0, 100% 100%, 80% 100%);
+  animation: wave 3000ms -4800ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(18) {
+  clip-path: polygon(55% 0, 65% 0, 105% 100%, 85% 100%);
+  animation: wave 3000ms -4600ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(19) {
+  clip-path: polygon(60% 0, 70% 0, 110% 100%, 90% 100%);
+  animation: wave 3000ms -4400ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(20) {
+  clip-path: polygon(65% 0, 75% 0, 115% 100%, 95% 100%);
+  animation: wave 3000ms -4200ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(21) {
+  clip-path: polygon(70% 0, 80% 0, 120% 100%, 100% 100%);
+  animation: wave 3000ms -4000ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(22) {
+  clip-path: polygon(75% 0, 85% 0, 125% 100%, 105% 100%);
+  animation: wave 3000ms -3800ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(23) {
+  clip-path: polygon(80% 0, 90% 0, 130% 100%, 110% 100%);
+  animation: wave 3000ms -3600ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(24) {
+  clip-path: polygon(85% 0, 95% 0, 135% 100%, 115% 100%);
+  animation: wave 3000ms -3400ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(25) {
+  clip-path: polygon(90% 0, 100% 0, 140% 100%, 120% 100%);
+  animation: wave 3000ms -3200ms ease-in-out infinite alternate;
+}
+#ui .text:nth-child(26) {
+  clip-path: polygon(95% 0, 105% 0, 145% 100%, 125% 100%);
+  animation: wave 3000ms -3000ms ease-in-out infinite alternate;
+}
+
+#image-container {
+  margin-top: var(--margin-top);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: flex-start;
+  transform: translateY(-18vh);
+}
+#image-container img {
+  height: var(--wiiu-height);
+  width: var(--wiiu-width);
+}
+#image-container #body-text {
+  display: flex;
+  width: var(--body-text-width);
+  height: var(--body-text-height);
+  position: absolute;
+  left: var(--body-left);
+  top: var(--body-below-top);
+  font-family: "Neue Haas Grotesk Text Pro Medium";
+  color: #b400b4;
+  font-size: var(--body-size);
+  filter: drop-shadow(0 0 0.5rem #500064);
+}
+#image-container .glowing-dot {
+  position: absolute;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background-color: purple;
+  border-radius: 100%;
+  box-shadow: 0 0 50px purple, 0 0 100px purple;
+  left: var(--dot-left);
+  top: var(--dot-top);
+  transform: translate(-50%, -50%);
+}
+#image-container .shine-pink {
+  position: absolute;
+  width: var(--shine-size);
+  height: auto;
+  left: var(--dot-left);
+  top: var(--dot-top);
+  pointer-events: none;
+  z-index: 1;
+  animation: pulse-opacity 2s linear infinite;
+  mask-image: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask-image: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0) 100%);
+}
+#image-container .shine-white {
+  position: absolute;
+  width: var(--shine-size);
+  height: auto;
+  left: var(--dot-left);
+  top: var(--dot-top);
+  pointer-events: none;
+  z-index: 1;
+  animation: pulse-opacity-2 2s linear infinite;
+  mask-image: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask-image: radial-gradient(circle, white 0%, rgba(255, 255, 255, 0) 100%);
+}
+#image-container .nand {
+  position: absolute;
+  width: var(--nand-width);
+  height: auto;
+  left: var(--nand-left);
+  top: var(--nand-top);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9) rotateX(10deg) rotateY(10deg) rotateZ(0deg);
+    color: #c80050;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    color: #5000c8;
+  }
+}
+@keyframes pulse-opacity {
+  0% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes pulse-opacity-2 {
+  0% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) rotate(-180deg);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+#text-below {
+  position: absolute;
+  left: var(--body-left);
+  top: var(--header-below-top);
+  font-family: "Neue Haas Grotesk Text Pro Medium";
+  color: #b400b4;
+  font-size: var(--button-one-size);
+  /* Neon btn */
+  /* Neon btn */
+}
+#text-below .btn-neon {
+  display: inline-block;
+  background-color: rgba(70, 70, 70, 0.25);
+  padding: var(--button-padding) var(--button-padding2);
+  margin: 0;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1px solid #d615c6;
+  color: #d615c6;
+  text-shadow: 0 0 4px #d615c6;
+  text-decoration: none;
+  box-shadow: inset 0 0 2px #d615c6, 0 0 2px #d615c6;
+  filter: drop-shadow(0 0 0.1rem #3c0050);
+  transition: box-shadow 0.3s, color 0.3s, text-shadow 0.3s;
+}
+#text-below .btn-neon:hover {
+  box-shadow: inset 0 0 6px #fc6df1, 0 0 6px #fc6df1;
+  color: #fc6df1;
+  text-shadow: 0 0 4px #fc6df1;
+}
+#text-below .btn-neon2 {
+  display: inline-block;
+  background-color: rgba(70, 70, 70, 0.25);
+  padding: var(--button-padding) var(--button-padding2);
+  transform: translateX(var(--button-offset));
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1px solid #7645ff;
+  color: #7645ff;
+  text-shadow: 0 0 4px #7645ff;
+  text-decoration: none;
+  box-shadow: inset 0 0 2px #7645ff, 0 0 2px #7645ff;
+  filter: drop-shadow(0 0 0.1rem #3c0050);
+  transition: box-shadow 0.3s, color 0.3s, text-shadow 0.3s;
+}
+#text-below .btn-neon2:hover {
+  box-shadow: inset 0 0 6px #9a75ff, 0 0 6px #9a75ff;
+  color: #9a75ff;
+  text-shadow: 0 0 4px #9a75ff;
+}
+
+#mask {
+  filter: drop-shadow(0 0 0.5rem #500064);
+}
+
+#mask2 {
+  filter: drop-shadow(0 0 0.5rem #500064);
+}
+
+#credits {
+  display: absolute;
+  width: var(--nand-left);
+  position: absolute;
+  justify: center;
+  left: var(--body-left);
+  top: var(--credits-below-top);
+  font-family: "Neue Haas Grotesk Text Pro Medium";
+  color: #5a0064;
+  font-size: var(--credits-size);
+  filter: drop-shadow(0 0 0.5rem #500064);
+}
