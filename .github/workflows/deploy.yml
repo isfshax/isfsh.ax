@@ -1,0 +1,81 @@
+name: Weekly Script
+
+on:
+  schedule:
+  - cron: '0 0 * * 0' # Runs every Sunday at midnight
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Set up Git user
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git config --global credential.helper store
+
+    - name: grab softmod files
+      run: |
+        #!/bin/bash
+
+        cd $GITHUB_WORKSPACE
+        
+        rm -rf sd
+        rm -rf isfshax_release
+        rm -rf *.zip
+        
+        mkdir sd
+        cd sd
+        
+        wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/boot1.img -O boot1now.img
+        
+        wget https://github.com/GaryOderNichts/recovery_menu/releases/latest/download/recovery_menu
+        
+        wget https://github.com/wiiu-env/PayloadFromRPX/releases/download/v0.1/PayloadFromRPX_20220904-161613.zip -O payloadRPX.zip
+        unzip payloadRPX.zip
+        rm *.zip
+        mv wiiu/root.rpx launch.rpx
+        
+        wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/fw.img
+        wget https://github.com/isfshax/isfshax_installer/releases/latest/download/ios.img
+        wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img
+        wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img.sha
+        
+        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/fw_img_loader_hbl.zip
+        unzip fw_img_loader_hbl.zip
+        rm *.zip
+        
+        cd wiiu
+        
+        wget https://github.com/jan-hofmeier/PayloadLoaderPayload/releases/latest/download/payload.elf
+        
+        mkdir payloads
+        mkdir payloads/fw_img_loader
+        
+        cp payload.elf payloads/fw_img_loader/payload.elf
+        
+        mkdir ios_plugins
+        cd ios_plugins
+        
+        wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/00core.ipx
+        wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx
+        
+        cd ../../..
+        
+        zip -r isfshax_release.zip sd
+        rm -rf sd
+
+    - name: Commit and push output.zip
+      run: |
+        git add isfshax_release.zip
+        git commit -m "Update isfshax_release.zip"
+        git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
+      env:
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
