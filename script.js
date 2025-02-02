@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   const image = document.querySelector("#image-container img");
   const root = document.documentElement;
+  let lastUpdateTime = 0;
 
   function updateStyles() {
     
@@ -90,11 +91,15 @@ document.addEventListener("DOMContentLoaded", function() {
   setTimeout(updateStyles, 200);
   setTimeout(updateStyles, 300);
   
-  // Run updateStyles using requestAnimationFrame
-  function updateStylesLoop() {
-    updateStyles();
+// Run updateStyles using requestAnimationFrame once per second
+  function updateStylesLoop(timestamp) {
+    if (timestamp - lastUpdateTime >= 1000) {
+      updateStyles();
+      lastUpdateTime = timestamp;
+    }
     requestAnimationFrame(updateStylesLoop);
   }
 
   requestAnimationFrame(updateStylesLoop);
+  
 });
