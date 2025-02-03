@@ -68,6 +68,18 @@ jobs:
         
         wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/00core.ipx
         wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx
+
+        cd ..
+
+        mkdir -p apps/haxcopy
+        
+        wget https://github.com/mackieks/haxcopy/releases/latest/download/haxcopy.wuhb -O wiiu/apps/haxcopy/haxcopy.wuhb
+        
+        mkdir hax
+        mkdir hax/ios_plugins
+
+        cp ios_plugins/00core.ipx hax/ios_plugins/00core.ipx
+        cp ios_plugins/5isfshax.ipx hax/ios_plugins/5isfshax.ipx
         
         cd ../../..
         
