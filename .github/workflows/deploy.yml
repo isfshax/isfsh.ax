@@ -63,7 +63,7 @@ jobs:
         mkdir ios_plugins
         
         wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/00core.ipx -O ios_plugins/00core.ipx
-        wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx ios_plugins/5isfshax.ipx
+        wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx -O ios_plugins/5isfshax.ipx
 
         mkdir -p apps/haxcopy
         
