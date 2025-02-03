@@ -73,7 +73,7 @@ jobs:
 
         mkdir -p apps/haxcopy
         
-        wget https://github.com/mackieks/haxcopy/releases/latest/download/haxcopy.wuhb -O wiiu/apps/haxcopy/haxcopy.wuhb
+        wget https://github.com/isfshax/haxcopy/releases/latest/download/haxcopy.wuhb -O apps/haxcopy/haxcopy.wuhb
         
         mkdir hax
         mkdir hax/ios_plugins
