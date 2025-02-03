@@ -56,10 +56,12 @@ jobs:
         
         wget https://github.com/jan-hofmeier/PayloadLoaderPayload/releases/latest/download/payload.elf
         
-        mkdir payloads
-        mkdir payloads/fw_img_loader
+        mkdir -p payloads/fw_img_loader
+        cd payloads/fw_img_loader
         
-        cp payload.elf payloads/fw_img_loader/payload.elf
+        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/payload.elf
+
+        cd ../..
         
         mkdir ios_plugins
         cd ios_plugins
