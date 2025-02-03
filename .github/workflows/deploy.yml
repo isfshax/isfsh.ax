@@ -57,31 +57,26 @@ jobs:
         wget https://github.com/jan-hofmeier/PayloadLoaderPayload/releases/latest/download/payload.elf
         
         mkdir -p payloads/fw_img_loader
-        cd payloads/fw_img_loader
         
-        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/payload.elf
-
-        cd ../..
+        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/payload.elf -O payloads/fw_img_loader/payload.elf
         
         mkdir ios_plugins
-        cd ios_plugins
         
-        wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/00core.ipx
-        wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx
-
-        cd ..
+        wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/00core.ipx -O ios_plugins/00core.ipx
+        wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx ios_plugins/5isfshax.ipx
 
         mkdir -p apps/haxcopy
         
         wget https://github.com/isfshax/haxcopy/releases/latest/download/haxcopy.wuhb -O apps/haxcopy/haxcopy.wuhb
-        
-        mkdir hax
-        mkdir hax/ios_plugins
 
-        cp ios_plugins/00core.ipx hax/ios_plugins/00core.ipx
-        cp ios_plugins/5isfshax.ipx hax/ios_plugins/5isfshax.ipx
+        cd ..
         
-        cd ../../..
+        mkdir -p hax/ios_plugins
+
+        cp wiiu/ios_plugins/00core.ipx hax/ios_plugins/00core.ipx
+        cp wiiu/ios_plugins/5isfshax.ipx hax/ios_plugins/5isfshax.ipx
+        
+        cd ..
         
         zip -r isfshax_release.zip sd
         rm -rf sd
