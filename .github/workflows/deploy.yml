@@ -47,7 +47,7 @@ jobs:
         wget https://github.com/isfshax/isfshax_installer/releases/latest/download/ios.img
         wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img
         wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img.sha
-        
+
         wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/fw_img_loader_hbl.zip
         unzip fw_img_loader_hbl.zip
         rm *.zip
@@ -56,10 +56,8 @@ jobs:
         
         wget https://github.com/jan-hofmeier/PayloadLoaderPayload/releases/latest/download/payload.elf
         
-        mkdir payloads
-        mkdir payloads/fw_img_loader
-        
-        cp payload.elf payloads/fw_img_loader/payload.elf
+        mkdir -p payloads/fw_img_loader
+        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/payload.elf -O payloads/fw_img_loader/payload.elf
         
         mkdir ios_plugins
         cd ios_plugins
