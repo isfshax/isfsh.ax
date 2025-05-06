@@ -76,6 +76,8 @@ jobs:
         cp wiiu/ios_plugins/00core.ipx hax/ios_plugins/00core.ipx
         cp wiiu/ios_plugins/5isfshax.ipx hax/ios_plugins/5isfshax.ipx
         wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/fw_fastboot.img -O hax/fw.img
+        
+        mkdir minute
         cd ..
         
         zip -r isfshax_release.zip sd
