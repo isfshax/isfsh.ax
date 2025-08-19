@@ -98,7 +98,7 @@ jobs:
     - name: Commit and push output.zip
       run: |
         cd "$GITHUB_WORKSPACE"
-        git add isfshax_release.zip
+        git add isfshax_release.zip defuse_release.zip
         git commit -m "Update isfshax_release.zip"
         git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
       env:
