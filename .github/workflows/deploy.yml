@@ -45,7 +45,7 @@ jobs:
         wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/5debug.ipx -O wiiu/ios_plugins/5debug.ipx
         cd ..
         rm -f "$GITHUB_WORKSPACE/defuse_release.zip"
-        zip -X -r "$GITHUB_WORKSPACE/defuse_release.zip" sd README.txt boot.img
+        zip -X -r "$GITHUB_WORKSPACE/defuse_release.zip" sd README.txt boot.img pico_defuse.uf2
         
         # clean up defuse
         cd sd
