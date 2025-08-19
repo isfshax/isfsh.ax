@@ -25,66 +25,79 @@ jobs:
       run: |
         #!/bin/bash
 
-        cd $GITHUB_WORKSPACE
+        set -e
         
+        rm -rf /tmp/ziptmp
+        mkdir /tmp/ziptmp
+        cd /tmp/ziptmp
+        
+        # defuse
+        wget https://github.com/StroopwafelCFW/wii_u_modchip/releases/latest/download/pico_defuse.uf2
+        wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/boot1.img -O boot1.img
+        cp "$GITHUB_WORKSPACE/README_defuse.txt" README.txt
         rm -rf sd
-        rm -rf isfshax_release
-        rm -rf *.zip
-        
         mkdir sd
+        cp boot1.img sd/boot1_slccmpt.img
         cd sd
+        wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/fw.img
+        mkdir -p wiiu/ios_plugins
+        wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/00core.ipx -O wiiu/ios_plugins/00core.ipx
+        wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/5debug.ipx -O wiiu/ios_plugins/5debug.ipx
+        cd ..
+        rm -f "$GITHUB_WORKSPACE/defuse_release.zip"
+        zip -X -r "$GITHUB_WORKSPACE/defuse_release.zip" sd README.txt boot.img
         
-        wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/boot1.img -O boot1now.img
+        # clean up defuse
+        cd sd
+        rm  wiiu/ios_plugins/5debug.ipx
+        mv boot1_slccmpt.img boot1now.img
         
+        # add isfshax files
+        wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx -O wiiu/ios_plugins/5isfshax.ipx
+        wget https://github.com/isfshax/isfshax_installer/releases/latest/download/ios.img
+        wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img
+        wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img.sha
+        
+        # udpih
         wget https://github.com/GaryOderNichts/recovery_menu/releases/latest/download/recovery_menu
         
+        # haxchi
+        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/fw_img_loader_hbl.zip
+        unzip fw_img_loader_hbl.zip
+        rm *.zip
+        
+        # dnspresso
         wget https://github.com/wiiu-env/PayloadFromRPX/releases/download/v0.1/PayloadFromRPX_20220904-161613.zip -O payloadRPX.zip
         unzip payloadRPX.zip
         rm *.zip
         mv wiiu/root.rpx launch.rpx
         
-        wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/fw.img
-        wget https://github.com/isfshax/isfshax_installer/releases/latest/download/ios.img
-        wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img
-        wget https://github.com/isfshax/isfshax/releases/latest/download/superblock.img.sha
+        # aroma, browser, dnspresso
+        wget https://github.com/jan-hofmeier/PayloadLoaderPayload/releases/latest/download/payload.elf -O wiiu/payload.elf
+        mkdir -p wiiu/payloads/fw_img_loader
+        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/payload.elf -O wiiu/payloads/fw_img_loader/payload.elf
         
-        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/fw_img_loader_hbl.zip
-        unzip fw_img_loader_hbl.zip
-        rm *.zip
-        
-        cd wiiu
-        
-        wget https://github.com/jan-hofmeier/PayloadLoaderPayload/releases/latest/download/payload.elf
-        
-        mkdir -p payloads/fw_img_loader
-        
-        wget https://github.com/jan-hofmeier/unencrypted_fw_img_payload/releases/latest/download/payload.elf -O payloads/fw_img_loader/payload.elf
-        
-        mkdir ios_plugins
-        
-        wget https://github.com/StroopwafelCFW/stroopwafel/releases/latest/download/00core.ipx -O ios_plugins/00core.ipx
-        wget https://github.com/isfshax/wafel_isfshax_patch/releases/latest/download/5isfshax.ipx -O ios_plugins/5isfshax.ipx
-
-        mkdir -p apps/haxcopy
-        
-        wget https://github.com/isfshax/haxcopy/releases/latest/download/haxcopy.wuhb -O apps/haxcopy/haxcopy.wuhb
-
-        cd ..
-        
+        # haxcopy
+        mkdir -p wiiu/apps/haxcopy
+        wget https://github.com/isfshax/haxcopy/releases/latest/download/haxcopy.wuhb -O wiiu/apps/haxcopy/haxcopy.wuhb
         mkdir -p hax/ios_plugins
-
         cp wiiu/ios_plugins/00core.ipx hax/ios_plugins/00core.ipx
         cp wiiu/ios_plugins/5isfshax.ipx hax/ios_plugins/5isfshax.ipx
         wget https://github.com/StroopwafelCFW/minute_minute/releases/latest/download/fw_fastboot.img -O hax/fw.img
-        
         mkdir minute
-        cd ..
         
-        zip -r isfshax_release.zip sd
-        rm -rf sd
+        # isfshax_release.zip
+        cd ..
+        rm -f "$GITHUB_WORKSPACE/isfshax_release.zip"
+        zip -X -r "$GITHUB_WORKSPACE/isfshax_release.zip" sd
+        
+        # cleanup
+        cd ..
+        rm -rf ziptmp
 
     - name: Commit and push output.zip
       run: |
+        cd "$GITHUB_WORKSPACE"
         git add isfshax_release.zip
         git commit -m "Update isfshax_release.zip"
         git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
