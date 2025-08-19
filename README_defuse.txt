@@ -17,7 +17,7 @@ REQUIRED FILES
               The menu will still be available if otp.bin is not present, 
               however IOS will not be able to boot.
 
-**Download the [binary release](https://github.com/mackieks/isfsh.ax/raw/refs/heads/main/defuse_release.zip)**
+**You can download everything here: [binary release](https://github.com/mackieks/isfsh.ax/raw/refs/heads/main/defuse_release.zip)**
               
 The following projects are provided in the zip:
 - [stroopwafel](https://github.com/shinyquagsire23/stroopwafel)
